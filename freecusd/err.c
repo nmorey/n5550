@@ -191,8 +191,8 @@ static int fcd_err_int(intmax_t i)
  */
 static int fcd_err_txt(void)
 {
-	if (errno >= 0 && errno < sys_nerr)
-		return fcd_err_str(sys_errlist[errno]);
+	if (errno >= 0)
+		return fcd_err_str(strerror(errno));
 
 	if (fcd_err_lit("Unknown error: ") == -1)
 		return -1;
